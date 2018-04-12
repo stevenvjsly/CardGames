@@ -1,0 +1,28 @@
+<div class="scoreboard cool-font">{{message}}</div>
+
+<button class="btn uppercase cool-font" *ngIf="!haveCards" (click)="drawHand()">draw</button>
+
+<button class="btn uppercase cool-font" *ngIf="haveCards && !busted && !stayed" (click)="hit()">hit</button>
+<button class="btn uppercase cool-font" *ngIf="haveCards && !busted && !stayed" (click)="stay()">stay</button>
+
+<button class="btn uppercase cool-font" *ngIf="(haveCards && busted) || stayed" [disabled]="true" [ngClass]="'disabled'">hit</button>
+<button class="btn uppercase cool-font" *ngIf="(haveCards && busted) || stayed" [disabled]="true" [ngClass]="'disabled'">stay</button>
+
+<button id="newDealBtn" class="btn uppercase cool-font" *ngIf="score != 0" (click)="newDeal()">New Deal</button>
+
+<div class="container">
+  <div *ngFor="let x of hand" class="card" [ngClass]="{'red': x.suit == 'Hearts' || x.suit == 'Diamonds', 'black': x.suit == 'Clubs' || x.suit == 'Spades'}">
+      <div class="top-rank">{{x.rank}}</div>
+      <i class="fa fa-heart"></i>
+      <div class="bottom-rank">{{x.rank}}</div>
+  </div>
+</div>
+
+<!-- only show container if user has stayed -->
+<!-- <div class="container" *ngIf="stayed && !blackjack">
+  <div *ngFor="let x of dealerHand" class="card" [ngClass]="{'red': x.suit == 'Hearts' || x.suit == 'Diamonds', 'black': x.suit == 'Clubs' || x.suit == 'Spades'}">
+      <div class="top-rank">{{x.rank}}</div>
+      <i class="fa fa-heart"></i>
+      <div class="bottom-rank">{{x.rank}}</div>
+  </div>
+</div> -->
