@@ -1,4 +1,4 @@
-export class Card{
+ export class Card{
     constructor(rank: string, value: number, suit: string){
         this.rank = rank;
         this.value = value;
